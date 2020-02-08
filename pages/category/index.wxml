@@ -1,0 +1,56 @@
+<view class="cates">
+  <SearchInput></SearchInput>
+  <view class="cates_container">
+    <!-- 左侧菜单 -->
+    <scroll-view scroll-y="true" class='left_menu'>
+      <view 
+        class="menu_item {{currentIndex===index?'active':''}}" 
+        wx:for="{{leftMenuList}}" 
+        wx:key="*this"
+        bindtap="handleItem"
+        data-index="{{index}}"
+        >
+        {{item}}
+      </view>
+    </scroll-view>
+
+    <!-- 右侧图片 -->
+    <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="right_content">
+      <view 
+        class='goods_group' 
+        wx:for="{{rightContent}}" 
+        wx:for-item="item1" 
+        wx:for-index="index1"
+           wx:key="cat_id"
+      >
+        
+          
+        <view class='goods_title'>
+         <text class="delimiter">/</text>
+       <text> {{item1.cat_name}}</text>
+        <text class="delimiter">/</text>
+        </view>
+       
+        <view class='goods_list'>
+          <navigator
+            wx:for="{{item1.children}}"
+            wx:for-item="item2" 
+            wx:for-index="index2"
+            wx:key="cat_id"
+          >
+          <image src="{{item2.cat_icon}}"></image>
+          <view class="goods_name">{{item2.cat_name}}</view>
+          </navigator>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+
+</view>
+  <scroll-view class="" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50" 
+      scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+      bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+      
+  </scroll-view>
+    
