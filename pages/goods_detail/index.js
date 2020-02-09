@@ -89,10 +89,11 @@ Page({
     if(index===-1) {
       // 3.如果缓存数组中没有该商品,就设置该商品的num为1
       this.GoodsInfo.num = 1
+      this.GoodsInfo.checked=true
       cart.push(this.GoodsInfo)
     }else {
       // 4.如果缓存数组中有该商品,就设置该商品的num为num+1
-      cart[index].num++
+      cart[index].num++ 
     }
 
     // 5.把购物重新添加到缓存中
