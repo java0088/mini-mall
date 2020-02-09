@@ -1,25 +1,35 @@
+<!-- 商品列表页面 -->
 <view class='goods_list'>
+<!-- 收索框组件 开始 -->
   <SearchInput></SearchInput>
+<!-- 收索框组件 结束 -->
+
+  <!-- tabs组件 开始 -->
   <Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsChange"></Tabs>
+  <!-- tabs组件 结束 -->
+  
+  <!-- 商品内容列表 开始 -->
   <view class='tabs_content'>
-  <block wx:if="{{tabs[0].isActive}}">
-    <view class="first_tab">
-      <navigator class="goods_item"
-        wx:for="{{goodsList}}"
-        wx:key="goods_id"
-      >
-          <view class="goods_img_wrap">
-          <image  src="{{item.goods_small_logo? item.goods_small_logo: 'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" ></image> 
-        </view>
-          <view class="goods_info_wrap">
-            <view class="goods_name">{{item.goods_name}}</view>
-          <view class="goods_price">￥{{item.goods_price}}</view>
-        </view>    
-      </navigator>
-        
-    </view>
-  </block>
-  <block wx:elif="{{tabs[1].isActive}}">2</block>
-  <block wx:else="{{tabs[2].isActive}}">3</block> 
-</view>
+    <block wx:if="{{tabs[0].isActive}}">
+      <view class="first_tab">
+        <navigator class="goods_item"
+          wx:for="{{goodsList}}"
+          wx:key="goods_id"
+          url="/pages/goods_detail/index?goods_id={{item.goods_id}}"
+        >
+            <view class="goods_img_wrap">
+            <image  src="{{item.goods_small_logo? item.goods_small_logo: 'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" ></image> 
+          </view>
+            <view class="goods_info_wrap">
+              <view class="goods_name">{{item.goods_name}}</view>
+            <view class="goods_price">￥{{item.goods_price}}</view>
+          </view>    
+        </navigator>
+          
+      </view>
+    </block>
+    <block wx:elif="{{tabs[1].isActive}}">2</block>
+    <block wx:else="{{tabs[2].isActive}}">3</block> 
+  </view>
+  <!-- 商品内容列表 结束 -->
 </view>

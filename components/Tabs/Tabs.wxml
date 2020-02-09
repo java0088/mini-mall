@@ -1,4 +1,6 @@
+<!-- tab栏组件 -->
 <view class='tabs'>
+<!-- tab栏头部 -->
 <view class='tabs_title'>
   <view wx:for="{{tabs}}" wx:key="id" class='title_item {{item.isActive?"active":""}}' bindtap="handleItemTap" data-index="{{index}}">
   {{item.value}}

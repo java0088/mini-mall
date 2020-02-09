@@ -1,26 +1,32 @@
 page {
   height: 100%;
 }
+// 商品分类样式
 .cates {
   height: 100%;
+  // 分类主体
   .cates_container {
     height: 1050rpx;
     display: flex;
+    // 左边菜单栏
     .left_menu {
       flex: 2;
       height: 1050rpx;
       overflow: hidden;
+      // 菜单项
       .menu_item {
         height: 80rpx;
         text-align: center;
         line-height: 80rpx;
         font-size: 30rpx;
       }
+      // 当前菜单项的样式
       .active {
         color: var(--themeColor);
         border-left: 5rpx solid var(--themeColor);
       }
     }
+    // 右边内容
     .right_content {
       flex: 5;
       height: 1050rpx;
