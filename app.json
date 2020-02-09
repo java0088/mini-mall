@@ -2,7 +2,6 @@
   "pages": [
     "pages/category/index",
     "pages/index/index",
-
     "pages/goods_list/index",
     "pages/goods_detail/index",
     "pages/cart/index",
@@ -52,5 +51,6 @@
         "selectedIconPath": "icons/my-o.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap63.json"
 }
