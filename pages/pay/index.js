@@ -41,7 +41,7 @@ Page({
       totalPrice += v.num * v.goods_price
       totalNum += v.num
     })
-    console.log(cartList)
+   
     // 设置赋值
     this.setData({
       cartList,
@@ -49,7 +49,7 @@ Page({
       totalNum,
       address
     })
-    wx.setStorageSync('cart', cartList)
+   
   },
 
   /**
@@ -71,21 +71,26 @@ Page({
       const consignee_addr = this.data.address.all
       const cartList = this.data.cartList
       let goods = []
-      cartList.forEach(v => goods.push({
-        goods_id: v.goods_id,
-        goods_number: v.num,
-        goods_price: v.goods_price
-      }))
-      let order_number = parseInt(Math.random() * 100000000000000)
+     
+      cartList.forEach(v =>{
+        let order_number = parseInt(Math.random() * 100000000000000)
+        goods.push({
+          goods_id: v.goods_id,
+          goods_number: v.num,
+          goods_price: v.goods_price,
+          order_number: order_number,
+          order_time:new Date()
+        })
+      })
+      
       // 保存数据
       let order = {
         order_price,
         consignee_addr,
-        goods,
-        order_number
+        goods
       }
       let res1 = await showModal({
-        content: '确认支付吗?'
+        content: '确认支付吗?一共需支付: ￥'+this.data.totalPrice
       })
       if (res1.confirm) {
         wx.showToast({
@@ -96,7 +101,9 @@ Page({
             })
           }
         })
-        
+        let newCart = wx.getStorageSync('cart')
+        let newCartList = newCart.filter(v=>!v.checked)
+        wx.setStorageSync('cart', newCartList)
       } else {
         await showToast({
           title: '已取消操作！！'

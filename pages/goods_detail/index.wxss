@@ -36,6 +36,9 @@
   align-items: center;
   border-left: 2rpx solid #ccc;
 }
+.goods_name_row .goods_collect .icon-shoucang1 {
+  color: orangered;
+}
 .goods_info {
   padding-bottom: 92rpx;
 }

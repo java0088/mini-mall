@@ -28,7 +28,9 @@ Page({
   }, 
   onLoad:function(options) {
     // 获取页面地址参数cid并保存到查询信息QueryParams中
-    this.QueryParams.cid = options.cid
+    this.QueryParams.cid = options.cid || ''
+    this.QueryParams.query = options.query||''
+
     this.getGoodsList()
   },
   // 获取商品列表的数据

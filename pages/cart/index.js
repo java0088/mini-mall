@@ -30,7 +30,7 @@ Page({
       await openSetting()
     }
     const res2 = await chooseAddress()
-    console.log(res2)
+    
     // 3.将获取的收货地址存入到缓存中
     wx.setStorageSync('address', res2)
   },
@@ -57,7 +57,7 @@ Page({
 
     // 判断数组是否为空
     allChecked = cartList.length != 0 ? allChecked : false
-    console.log(cartList)
+    
     // 设置赋值
     this.setData({
       cartList,
@@ -77,7 +77,7 @@ Page({
     const address = wx.getStorageSync('address')
 
     // 2.自定义all属性保存用户的信息
-    address.all = address.provinceName + address.cityName +      address.countyName + address.detailInfo
+    address.all = address.provinceName + address.cityName +      address.countyName + address.detailInfo||''
     const cartList = wx.getStorageSync('cart') || []
     this.setData({
       address
@@ -153,7 +153,7 @@ Page({
       cartList[index].num += operation
       // 5.把cartList设置会data和缓存中
       this.setCart(cartList)
-      console.log(id, operation, index)
+      
     } 
   },
   /**

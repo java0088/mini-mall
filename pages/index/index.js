@@ -21,6 +21,7 @@ Page({
     this.getSwiperList()
     this.getCateList()
     this.getFloorList()
+    
   },
    
    /**
@@ -31,6 +32,13 @@ Page({
     request({ url: '/home/swiperdata' }).then(
       result => {
         // 2.通过.then的方式获取数据并保存到data中
+
+        // 由于跳转的路径和我们的不一样所以需要修改一些
+        // 循环遍历result并修改navigator_url
+        result.forEach(v=>{
+          v.navigator_url= v.navigator_url.replace('main','index')
+        })
+        
         this.setData({
           swiperList: result
         })
@@ -60,9 +68,17 @@ Page({
     // 1.发送请求获取首页分类数据
     request({ url: '/home/floordata' }).then(
       result => {
+        
+        result.forEach(v1=>{
+          v1.product_list.forEach(v2=>{
+            let arr = v2.navigator_url.split('?')   
+            v2.navigator_url = arr[0]+'/index?'+arr[1]
+          })
+        })
         this.setData({
            // 2.通过.then的方式获取数据并保存到data中
           floorList: result
+         
         })
       }
     )
